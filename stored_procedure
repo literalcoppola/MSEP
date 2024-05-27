@@ -1,0 +1,124 @@
+1. Crie uma stored procedure chamada ola_mundo que, quando chamada, exibe a mensagem "Olá, Mundo!"
+
+        DELIMITER //
+        
+        CREATE PROCEDURE ola_mundo()
+        BEGIN
+            SELECT 'Olá, Mundo!' AS mensagem;
+        END //
+        
+        DELIMITER ;
+        
+        CALL ola_mundo();
+
+
+2. Crie uma stored procedure chamada SAUDACAO que aceita um parâmetro nome e exibe uma saudação personalizada, por exemplo, "Ola, [nome]!".
+        DELIMITER //
+        
+        CREATE PROCEDURE SAUDACAO (nome VARCHAR(50))
+        BEGIN
+            SELECT CONCAT('Ola, ', nome, '!');
+        END//
+        
+        DELIMITER ;
+        
+        CALL SAUDACAO('nome');
+
+
+3. Crie uma stored procedure chamada SOMA_NUMEROS que aceita dois números como entrada e retorna a soma deles.
+
+        DELIMITER //
+        
+        CREATE PROCEDURE SOMA_NUMEROS (n1 INT, n2 INT)
+        BEGIN
+            SELECT n1 + n2 AS resultado;
+        END//
+        
+        DELIMITER ;
+        
+        CALL SOMA_NUMEROS(n1, n2);
+
+
+4. Crie uma stored procedure chamada calculate_square que aceita um número e retorna o quadrado desse número usando uma variável local. 
+
+        DELIMITER //
+        
+        CREATE PROCEDURE calculate_square(IN num INT)
+        BEGIN
+            DECLARE square INT;
+            SET square = num * num;
+            SELECT square AS square_result;
+        END//
+        
+        DELIMITER ;
+        
+        CALL calculate_square(num);
+
+
+5. Crie uma stored procedure chamada VERIFICA_PAR_IMPAR que aceita um número inteiro positivo e retorna se ele é par ou ímpar.
+
+DELIMITER //
+        
+        CREATE PROCEDURE VERIFICA_PAR_IMPAR(IN num INT)
+        BEGIN
+            IF num % 2 = 0 THEN
+                SELECT CONCAT('O número ', num, ' é par.') AS resultado;
+            ELSE
+                SELECT CONCAT('O número ', num, ' é ímpar.') AS resultado;
+            END IF;
+        END//
+        
+        DELIMITER ;
+        
+        CALL VERIFICA_PAR_IMPAR(num);
+
+
+6. Crie uma stored procedure chamada IMPRIMIR_NUMEROS que aceita um número inteiro positivo N e imprime todos os números de 1 até N.
+    #erro
+        DELIMITER //
+        
+        CREATE PROCEDURE IMPRIMIR_NUMER0S(IN N INT)
+        BEGIN
+            DECLARE i INT DEFAULT 1;
+            WHILE i <= N DO
+                SELECT i;
+                SET i = i + 1;
+            END WHILE;
+        END//
+        
+        DELIMITER ;
+        
+        CALL IMPRIMIR_NUMER0S(N);
+
+
+7. Crie uma stored procedure chamada LISTAR_FUNCIONARIOS que lista todos os funcionarios da tabela revendabcd.funcionarios.
+
+        DELIMITER //
+        
+        CREATE PROCEDURE LISTAR_FUNCIONARI0S()
+        BEGIN
+            SELECT nome FROM revendabcd.funcionario;
+        END//
+        
+        DELIMITER ;
+        
+        CALL LISTAR_FUNCIONARI0S();
+
+
+8. Crie uma stored procedure chamada DIVIDIR_NUMEROS que aceita dois números e retorna a divisão deles, tratando a divisão por zero.
+
+        DELIMITER //
+        
+        CREATE PROCEDURE DIVIDIR_NUMEROS(IN num1 INT, IN num2 INT)
+        BEGIN
+            IF num2 = 0 THEN
+                SELECT 'Erro: Divisão por zero não é permitida.';
+            ELSE
+                SELECT num1 / num2 AS resultado;
+            END IF;
+        END//
+        
+        DELIMITER ;
+        
+        CALL DIVIDIR_NUMEROS(10, 2);
+
